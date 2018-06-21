@@ -6,6 +6,10 @@ defmodule Carpool do
   end
 
   def match(coord1, coord2) do
+    Carpool.Server.Matcher.match(coord1, coord2)
+  end
+  
+  def add_box(coord1, coord2) do
     Carpool.Server.Matcher.add_box(coord1, coord2)
   end
 

@@ -3,19 +3,15 @@
 **TODO: Add description**
 
 ## Installation
+  * clone the repo
+  * mix deps.get
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `carpool` to your list of dependencies in `mix.exs`:
+## How to Use
+  * iex -S mix
+  * coord1 = %Carpool.Geographic.Coordinate{lat: 1, lon: 2} # create coordinate
+  * coord2 = %Carpool.Geographic.Coordinate{lat: 3, lon: 4} # create coordinate
 
-```elixir
-def deps do
-  [
-    {:carpool, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/carpool](https://hexdocs.pm/carpool).
-
+  * Carpool.boxes  # will return all bounded boxes
+  * Carpool.matched_boxes  # will return matched boxes with coordinates
+  * Carpool.add_box(coord1, coord2)  # will add a box
+  * Carpool.match(coord1, coord2)  # will return a list of two elments with matched box or nil if no match

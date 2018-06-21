@@ -12,15 +12,15 @@ defmodule Carpool.Server.Matcher do
     Agent.get(__MODULE__, fn state -> state end)
   end
 
+  def match_coordinates(coord1, coord2) do
+    [match(coord1), match(coord2)]
+  end
+
   def add_box(coord1, coord2) do
     box = Box.box_from_coordinates(coord1, coord2)
-    
-    matched_coordinates = [match(coord1), match(coord2)]
     Agent.update(__MODULE__, fn state -> [ box | state ] end)
-    
-    matched_coordinates
   end
-  
+
   def update_box(current, new) do
     Agent.update(__MODULE__, fn state -> 
       state |> Enum.map(fn box -> 
