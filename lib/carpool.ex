@@ -1,18 +1,20 @@
 defmodule Carpool do
-  @moduledoc """
-  Documentation for Carpool.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(_type, _args) do
+    Carpool.Server.Matcher.start_link([])
+  end
 
-  ## Examples
+  def match(coord1, coord2) do
+    Carpool.Server.Matcher.add_box(coord1, coord2)
+  end
 
-      iex> Carpool.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def boxes do
+    Carpool.Server.Matcher.get_boxes
+  end
+  
+  def matched_boxes do
+    Carpool.boxes
+    |> Enum.filter(fn box -> box.coordinate != nil end)
   end
 end
